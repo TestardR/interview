@@ -1,7 +1,6 @@
 import pytest
 import requests
-
-URL = 'https://ghibliapi.herokuapp.com'
+from config import URL
 
 """ To avoid false negative test. we skip test if a 
 ConnectionError is raised. Thus, to avoid false negatives """

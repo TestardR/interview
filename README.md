@@ -34,6 +34,8 @@ test_sanity.py tests access to data and that data conformity to what is expected
 
 main.py implements a basic fastAPI server (very lightweight framework), on port 8000. It features a GET route to "/movies". This route serves the content produced by our compute service.
 
+On the server, we will call our compute service as soon as the server starts up. It will increase startup time but will grealty decrease time to serve data. Indeed the computed data is cached. 
+
 #### Cache service
 
 To limit time-intensive operations with our compute service and to not call it on every page load, we implmented cache using cachetools.
