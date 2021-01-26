@@ -1,8 +1,15 @@
+import pytest
 from compute import compute_data
-from .fixture_data import films, people
 
+from .fixture_data import (films, films_without_people, people,
+                           people_without_films)
 
-def test_compute_data():
+""" To avoid false negative test. we skip test if a
+ConnectionError is raised. Thus, to avoid false negatives """
+
+@pytest.mark.xfail(raises=requests.exceptions.ConnectionError)
+@pytest.mark.parametrize("films,people", [(films, people), (films_without_people, people), (films, people_without_films), (films_without_people, people_without_films)])
+def test_compute_data(films, people):
     expected = compute_data(films, people)
 
     assert type(expected) is dict

@@ -1,4 +1,3 @@
-from test.test_data import films, people
 from urllib.parse import urlparse
 import requests
 
@@ -6,9 +5,10 @@ URL = 'https://ghibliapi.herokuapp.com'
 
 
 def compute_data(films, people):
-    """ Aggregates two sources of data to produce 
+    """ Aggregates two sources of data to produce
     expected data structure """
     data_map = {}  # Note: I could have used a defaultdict
+
     for film in films:
         data_map[film["id"]] = {"title": film["title"], "persons": []}
 
@@ -25,4 +25,6 @@ def compute_data(films, people):
 
 
 if __name__ == "__main__":
+    films = requests.get(f"{URL}/films/").json()
+    people = requests.get(f"{URL}/people/").json()
     compute_data(films, people)
