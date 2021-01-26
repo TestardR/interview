@@ -8,13 +8,12 @@ from config import URL, DEFAULT_CACHE_SIZE, DEFAULT_CACHE_TIME
 
 logger = logging.getLogger()
 
-
+# generic functions that gets data, handle exceptions, return json or None
 @cached(cache=TTLCache(maxsize=DEFAULT_CACHE_SIZE, ttl=DEFAULT_CACHE_TIME))
 def compute_data(films=requests.get(f"{URL}/films/").json(), people=requests.get(f"{URL}/people/").json()):
     """ Aggregates two sources of data to produce
     expected data structure """
     logger.info("Data computation starts")
-
     data_map = {}  # Note: I could have used a defaultdict
 
     for film in films:

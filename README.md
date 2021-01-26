@@ -41,3 +41,10 @@ On the server, we will call our compute service as soon as the server starts up.
 To limit time-intensive operations with our compute service and to not call it on every page load, we implmented cache using cachetools.
 
 Thus, we cache the result produced by our compute service for 60 secondes. After that period of time, cache is bust and heavy computation starts over.
+
+fastAPI single threaded server, gives a single threaded event-loop, listening for an event on get_movies. Leveraging the fastAPI architecture to use the single threaded single. 
+Multithread ? Each thread would have its own cache so that's where Redis is useful. 
+
+
+
+
