@@ -1,5 +1,6 @@
 import pytest
 from compute import compute_data
+import requests
 
 from .fixture_data import (films, films_without_people, people,
                            people_without_films)

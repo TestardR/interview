@@ -1,13 +1,13 @@
 import pytest
 import requests
 
-URL = "https://ghibliapi.herokuapp.com"
+URL = 'https://ghibliapi.herokuapp.com'
 
 """ To avoid false negative test. we skip test if a 
 ConnectionError is raised. Thus, to avoid false negatives """
 
 
-@pytest.mark.xfail(raises=requests.exceptions.ConnectionError)
+@pytest.mark.xfail(raises=ConnectionError)
 def test_films_api():
     r = requests.get(f"{URL}/films/").json()
     if "id" in r[0]:
@@ -16,7 +16,7 @@ def test_films_api():
         assert True
 
 
-@pytest.mark.xfail(raises=requests.exceptions.ConnectionError)
+@pytest.mark.xfail(raises=ConnectionError)
 def test_people_api():
     r = requests.get(f"{URL}/people/").json()
     if "id" in r[0]:

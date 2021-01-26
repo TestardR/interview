@@ -1,10 +1,14 @@
 from urllib.parse import urlparse
+
+from cachetools import cached, TTLCache
 import requests
 
-URL = 'https://ghibliapi.herokuapp.com'
+
+from config import URL, DEFAULT_SIZE
 
 
-def compute_data(films, people):
+@cached(cache=TTLCache(maxsize=DEFAULT_SIZE, ttl=60))
+def compute_data(films=requests.get(f"{URL}/films/").json(), people=requests.get(f"{URL}/people/").json()):
     """ Aggregates two sources of data to produce
     expected data structure """
     data_map = {}  # Note: I could have used a defaultdict
@@ -25,6 +29,4 @@ def compute_data(films, people):
 
 
 if __name__ == "__main__":
-    films = requests.get(f"{URL}/films/").json()
-    people = requests.get(f"{URL}/people/").json()
-    compute_data(films, people)
+    compute_data()
