@@ -1,8 +1,10 @@
 ### Building Blocks
 
-1. Compute service
-2. API Service
-3. Cache Service
+1. Compute svc
+2. API svc
+3. Cache svc
+4. Job svc
+6. Client svc
 
 **Notes: Written code has to been done using TDD**
 
@@ -32,19 +34,17 @@ test_sanity.py tests access to data and that data conformity to what is expected
 
 #### API service
 
-main.py implements a basic fastAPI server (very lightweight framework), on port 8000. It features a GET route to "/movies". This route serves the content produced by our compute service.
+main.py implements a basic fastAPI server (very lightweight framework), on port 5000. It features a GET route to "/movies". This route serves the content produced by our compute service.
 
-On the server, we will call our compute service as soon as the server starts up. It will increase startup time but will grealty decrease time to serve data. Indeed the computed data is cached. 
+On the server, we will call our job service (a thread calling the compute service in the background) as soon as the server starts up. 
 
 #### Cache service
 
-To limit time-intensive operations with our compute service and to not call it on every page load, we implmented cache using cachetools.
+To limit time-intensive operations with our compute service and to not call it on every page load, we implmented cache using Redis.
 
-Thus, we cache the result produced by our compute service for 60 secondes. After that period of time, cache is bust and heavy computation starts over.
+As we use mutlithreading to run our compute service in the background, we opted for Redis. It is a single source of truth for all threads. Furthermore, Redis is atomic on write assuring us of data consistency (to be further investigated). 
 
-fastAPI single threaded server, gives a single threaded event-loop, listening for an event on get_movies. Leveraging the fastAPI architecture to use the single threaded single. 
-Multithread ? Each thread would have its own cache so that's where Redis is useful. 
+#### Job service
 
-
-
+We implemented the compute sercice so as it can be run as a background task. The background task is run by a thread every minute, while caching the result. Thus the user never hits the compute service itself. The user only access our cache service.
 
