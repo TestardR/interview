@@ -1,12 +1,14 @@
 from urllib.parse import urlparse
-from cachetools import cached, TTLCache
 import requests
 import time
 import logging
+import redis
+import json
 
-from config import URL, DEFAULT_CACHE_SIZE, DEFAULT_CACHE_TIME
+from config import URL, DEFAULT_CACHE_TIME
 from utils import get_data
 
+cache = redis.Redis(host='redis', port=6379)
 logger = logging.getLogger()
 
 
@@ -29,15 +31,22 @@ def _compute(films, people):
                 data_map[film_id]["persons"].append(person)
 
     logger.info("Data computation done")
-    return data_map
+    cache.set("movies", json.dumps(data_map))
+    cache.expire("movies", DEFAULT_CACHE_TIME)
 
 
-@cached(cache=TTLCache(maxsize=DEFAULT_CACHE_SIZE, ttl=DEFAULT_CACHE_TIME))
 def compute_data(films, people):
+    if cache.exists("movies"):
+        data = cache.get("movies")
+        return json.loads(data)
+
     films_data = get_data(films)
     people_data = get_data(people)
 
     if films_data and people_data:
-        data = _compute(films_data, people_data)
+        _compute(films_data, people_data)
+        data = cache.get("movies")
+        return json.loads(data)
+
     else:
         return {}

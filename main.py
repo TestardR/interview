@@ -23,9 +23,8 @@ def index():
 
 @app.get("/movies")
 def get_movies():
-    data = compute_data('films', 'people')
-    return data
+    return compute_data('films', 'people')
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=5000)
