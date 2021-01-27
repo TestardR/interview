@@ -10,11 +10,8 @@ def test_get_movies_with_startup():
     with TestClient(app) as client:
         response = client.get("/movies")
         assert response.status_code == 200
-        assert response.json() == expected
 
 
 def test_get_movies():
     response = client.get("/movies")
-
     assert response.status_code == 200
-    assert response.json() == expected

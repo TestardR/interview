@@ -5,12 +5,12 @@ import time
 import logging
 
 from config import URL, DEFAULT_CACHE_SIZE, DEFAULT_CACHE_TIME
+from utils import get_data
 
 logger = logging.getLogger()
 
-# generic functions that gets data, handle exceptions, return json or None
-@cached(cache=TTLCache(maxsize=DEFAULT_CACHE_SIZE, ttl=DEFAULT_CACHE_TIME))
-def compute_data(films=requests.get(f"{URL}/films/").json(), people=requests.get(f"{URL}/people/").json()):
+
+def _compute(films, people):
     """ Aggregates two sources of data to produce
     expected data structure """
     logger.info("Data computation starts")
@@ -30,3 +30,14 @@ def compute_data(films=requests.get(f"{URL}/films/").json(), people=requests.get
 
     logger.info("Data computation done")
     return data_map
+
+
+@cached(cache=TTLCache(maxsize=DEFAULT_CACHE_SIZE, ttl=DEFAULT_CACHE_TIME))
+def compute_data(films, people):
+    films_data = get_data(films)
+    people_data = get_data(people)
+
+    if films_data and people_data:
+        data = _compute(films_data, people_data)
+    else:
+        return {}

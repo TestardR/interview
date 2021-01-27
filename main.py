@@ -4,26 +4,27 @@ import uvicorn
 import requests
 
 from compute import compute_data
-
+from utils import get_data
+from config import URL
 logger = logging.getLogger()
 
 app = FastAPI()
 
-
 @app.on_event("startup")
-async def setup():
+def setup():
     """ Slows down server startup, but decreases time to serve API calls as computed_data is cached """
-    compute_data()
+    compute_data('films', 'people')
 
 
 @app.get("/")
-async def index():
+def index():
     return "Ghibli's API"
 
 
 @app.get("/movies")
-async def get_movies():
-    return compute_data()
+def get_movies():
+    data = compute_data('films', 'people')
+    return data
 
 
 if __name__ == "__main__":
