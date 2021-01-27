@@ -8,6 +8,10 @@
 
 **Notes: Written code has to been done using TDD**
 
+#### Architecture schema
+
+![architecture schema](https://github.com/TestardR/intrvw_s/blob/master/architecture.png)
+
 #### Compute service
 
 1. Intensive calculation
@@ -47,4 +51,6 @@ As we use mutlithreading to run our compute service in the background, we opted 
 #### Job service
 
 We implemented the compute sercice so as it can be run as a background task. The background task is run by a thread every minute, while caching the result. Thus the user never hits the compute service itself. The user only access our cache service.
+
+#### Client service
 
