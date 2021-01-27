@@ -1,4 +1,4 @@
-import requests  # pas async use request async.io
+import requests 
 import logging
 
 from config import URL
