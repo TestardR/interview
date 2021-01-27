@@ -10,15 +10,16 @@ logger = logging.getLogger()
 
 app = FastAPI()
 
+
 @app.on_event("startup")
 def setup():
     """ Slows down server startup, but decreases time to serve API calls as computed_data is cached """
     compute_data('films', 'people')
 
 
-@app.get("/")
-def index():
-    return "Ghibli's API"
+@app.get("/ping")
+def pong():
+    return {"ping": "pong!"}
 
 
 @app.get("/movies")
