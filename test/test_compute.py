@@ -1,9 +1,11 @@
 import pytest
-from compute import _compute, compute_data
 import requests
+import json
 
 from .fixture_data import (films, films_without_people, people,
                            people_without_films)
+from cache import cache
+from compute import _compute, compute_data
 
 """ To avoid false negative test. we skip test if a
 ConnectionError is raised. Thus, to avoid false negatives """
@@ -11,7 +13,9 @@ ConnectionError is raised. Thus, to avoid false negatives """
 
 @pytest.mark.parametrize("films,people", [(films, people), (films_without_people, people), (films, people_without_films), (films_without_people, people_without_films)])
 def test__compute(films, people):
-    expected = _compute(films, people)
+    _compute(films, people)
+    data = cache.get("movies")
+    expected = json.loads(data)
 
     assert type(expected) is dict
     assert type(
