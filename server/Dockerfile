@@ -6,7 +6,10 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 RUN pip install poetry
 
-COPY ./ /app
+COPY ./src /app/src
+COPY ./test /app/test
+COPY pyproject.toml /app
+COPY poetry.lock /app
 
 WORKDIR /app
 RUN poetry config virtualenvs.create false

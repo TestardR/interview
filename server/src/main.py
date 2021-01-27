@@ -4,10 +4,10 @@ import uvicorn
 import requests
 import json
 
-from cache import cache
-from config import URL
-from job import compute_data_continuously
-from compute import compute_data
+from .cache import cache
+from .config import URL
+from .job import compute_data_continuously
+from .compute import compute_data
 
 
 logger = logging.getLogger()

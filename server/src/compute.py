@@ -5,9 +5,9 @@ import logging
 import redis  # async redis
 import json
 
-from config import URL, DEFAULT_CACHE_TIME
-from utils import get_data
-from cache import cache
+from .config import URL, DEFAULT_CACHE_TIME
+from .utils import get_data
+from .cache import cache
 
 
 logger = logging.getLogger()

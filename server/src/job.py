@@ -1,8 +1,7 @@
 import threading
 import time
-
 import schedule
-from compute import compute_data
+from .compute import compute_data
 
 
 def say_hello():
