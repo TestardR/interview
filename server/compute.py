@@ -36,10 +36,6 @@ def _compute(films, people):
 
 
 def compute_data(films="films", people="people"):
-    if cache.exists("movies"):
-        data = cache.get("movies") 
-        return json.loads(data)
-
     films_data = get_data(films)
     people_data = get_data(people)
 

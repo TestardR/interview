@@ -5,7 +5,11 @@ import schedule
 from compute import compute_data
 
 
-def run_continuously(interval=1):
+def say_hello():
+    print('hello')
+
+
+def compute_data_continuously(interval=1):
     """Continuously run, while executing pending jobs at each
     elapsed time interval.
     @return cease_continuous_run: threading. Event which can
@@ -27,4 +31,4 @@ def run_continuously(interval=1):
     return cease_continuous_run
 
 
-schedule.every().minute.do(compute_data)
+schedule.every(20).seconds.do(compute_data)
