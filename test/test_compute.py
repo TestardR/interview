@@ -9,7 +9,6 @@ from .fixture_data import (films, films_without_people, people,
 ConnectionError is raised. Thus, to avoid false negatives """
 
 
-@pytest.mark.xfail(raises=requests.exceptions.ConnectionError)
 @pytest.mark.parametrize("films,people", [(films, people), (films_without_people, people), (films, people_without_films), (films_without_people, people_without_films)])
 def test__compute(films, people):
     expected = _compute(films, people)
