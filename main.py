@@ -27,8 +27,11 @@ async def pong():
 
 @app.get("/movies")
 def get_movies():
-    data = cache.get("movies")
-    return json.loads(data)
+    if cache.exists("moives"):
+        data = cache.get("movies")
+        return json.loads(data)
+    else:
+        return {"loading": True}
 
 
 if __name__ == "__main__":
