@@ -1,4 +1,4 @@
-import requests
+import requests  # pas async use request async.io
 import logging
 
 from config import URL
@@ -8,7 +8,6 @@ logger = logging.getLogger()
 
 def get_data(source):
     try:
-        r = requests.get(f"{URL}/{source}").json()
-        return r
+        return requests.get(f"{URL}/{source}").json()
     except Exception as e:
         logger.warning(f'An error occured while fetching, {e}')

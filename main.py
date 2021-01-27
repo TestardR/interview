@@ -2,10 +2,13 @@ import logging
 from fastapi import FastAPI
 import uvicorn
 import requests
+import json
 
-from compute import compute_data
-from utils import get_data
+from cache import cache
 from config import URL
+from job import run_continuously
+
+
 logger = logging.getLogger()
 
 app = FastAPI()
@@ -14,17 +17,18 @@ app = FastAPI()
 @app.on_event("startup")
 def setup():
     """ Slows down server startup, but decreases time to serve API calls as computed_data is cached """
-    compute_data('films', 'people')
+    start_compute_job = run_continuously()
 
 
 @app.get("/ping")
-def pong():
+async def pong():
     return {"ping": "pong!"}
 
 
 @app.get("/movies")
 def get_movies():
-    return compute_data('films', 'people')
+    data = cache.get("movies")
+    return json.loads(data)
 
 
 if __name__ == "__main__":
