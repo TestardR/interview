@@ -1,15 +1,12 @@
-export interface Film {
-  [key: string]: {
-    title: string;
-    persons: Person[];
-  };
+export interface IFilm {
+  film: { title: string; persons: IPerson[] | [] };
 }
 
-export interface Films {
-  films: Films[];
+export interface IFilms {
+  [id: string]: { title: string; persons: IPerson[] | [] };
 }
 
-export interface Person {
+export interface IPerson {
   id: string;
   name: string;
 }

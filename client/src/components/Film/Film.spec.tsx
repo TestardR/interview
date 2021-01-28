@@ -2,10 +2,10 @@ import React from "react";
 
 import { shallow } from "enzyme";
 import { findByTestAttr } from "../../test/testUtils";
-import FilmList from "./FilmList";
+import Film from "./Film";
 
 const defaultProps = {
-  "123-456": {
+  film: {
     title: "toto",
     persons: [
       {
@@ -17,21 +17,21 @@ const defaultProps = {
 };
 
 /**
- * Factory function to create a ShallowWrapper for the FilmList component.
+ * Factory function to create a ShallowWrapper for the Film component.
  * @function setup
- * @param {array} films - films value specific to this setup.
+ * @param {array} film - film value specific to this setup.
  * @returns {ShallowWrapper}
  */
 
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<FilmList {...setupProps} />);
+  return shallow(<Film {...setupProps} />);
 };
 
 describe("if there are films", () => {
   test("it should render", () => {
     const wrapper = setup();
-    const component = findByTestAttr(wrapper, "component-film-list");
+    const component = findByTestAttr(wrapper, "component-film");
     expect(component.length).toBe(1);
   });
 });
