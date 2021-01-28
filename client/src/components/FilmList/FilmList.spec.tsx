@@ -14,6 +14,15 @@ const defaultProps = {
       },
     ],
   },
+  "222-456": {
+    title: "toto",
+    persons: [
+      {
+        id: "789-1011",
+        name: "tata",
+      },
+    ],
+  },
 };
 
 /**
@@ -28,7 +37,7 @@ const setup = (props = {}) => {
   return shallow(<FilmList {...setupProps} />);
 };
 
-describe("if there are films", () => {
+describe("<FilmList />", () => {
   test("it should render", () => {
     const wrapper = setup();
     const component = findByTestAttr(wrapper, "component-film-list");

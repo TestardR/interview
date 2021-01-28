@@ -17,7 +17,7 @@ export default function Spinner() {
   return (
     <div className={classes.root} data-test="component-spinner">
       <LinearProgress />
-      <LinearProgress color="secondary" />
+      <LinearProgress />
     </div>
   );
 }
