@@ -10,7 +10,13 @@
 
 #### Architecture schema
 
-![architecture schema](https://github.com/TestardR/intrvw_s/blob/master/architecture.png)
+##### Version 1
+
+![architecture schema version 1](https://github.com/TestardR/intrvw_s/blob/master/architecture-v1.png)
+
+##### Version 2: If I had the time to do it.
+
+![architecture schema version 2](https://github.com/TestardR/intrvw_s/blob/master/architecture-v2.png)
 
 #### Compute service
 
