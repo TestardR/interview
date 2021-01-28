@@ -35,7 +35,7 @@ def _compute(films, people):
     cache.set("movies", json.dumps(data_map))
 
 
-def compute_data(films="films", people="people"):
+def compute_external_api(films="films", people="people"):
     films_data = get_data(films)
     people_data = get_data(people)
 

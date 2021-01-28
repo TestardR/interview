@@ -5,7 +5,7 @@ import json
 from .fixture_data import (films, films_without_people, people,
                            people_without_films)
 from cache import cache
-from compute import _compute, compute_data
+from compute import _compute
 
 """ To avoid false negative test. we skip test if a
 ConnectionError is raised. Thus, to avoid false negatives """

@@ -1,12 +1,11 @@
+import FilmList from "./components/FilmList/FilmList";
 import { URL } from "./Constants";
 import { useFetch } from "./hooks/useFetch";
 
 function App() {
   const data = useFetch(URL);
 
-  console.log(data)
-
-  return <div className="App">Hello</div>;
+  return data && !data.loading ? <FilmList films={data} /> : <div>Loading</div>;
 }
 
 export default App;
