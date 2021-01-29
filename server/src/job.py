@@ -1,11 +1,11 @@
 import threading
 import time
 import schedule
-from .compute import compute_external_api
 
+from config import DEFAULT_CACHE_TIME
+from .compute_ext_api import compute_external_api
 
-def say_hello():
-    print('hello')
+""" Background task calling Compute External API service every X time """
 
 
 def compute_external_api_continuously(interval=1):
@@ -30,4 +30,4 @@ def compute_external_api_continuously(interval=1):
     return cease_continuous_run
 
 
-schedule.every(20).seconds.do(compute_external_api)
+schedule.every(DEFAULT_CACHE_TIME).seconds.do(compute_external_api)

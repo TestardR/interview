@@ -5,9 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import requests
 
-
+from config import URL
 from .cache import cache
-from .config import URL
 from .job import compute_external_api_continuously
 
 
@@ -15,6 +14,8 @@ logger = logging.getLogger()
 
 app = FastAPI()
 
+
+""" Warning: The following settings will have to changed to launch for production """
 origins = [
     "http://localhost:8000"
 ]
@@ -27,9 +28,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.on_event("startup")
 def setup():
-    """ Slows down server startup, but decreases time to serve API calls as computed_data is cached """
+    """ Starts background task calling our Compute External API svc every minute """
     compute_external_api_continuously()
 
 
@@ -43,4 +45,4 @@ def get_movies():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5000)
+    uvicorn.run(app)

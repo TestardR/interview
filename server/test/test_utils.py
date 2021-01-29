@@ -1,5 +1,6 @@
-from utils import get_data
+from src.utils import get_data
 from .fixture_data import films, people
+
 
 def test_get_data():
     expected_films = get_data('films')

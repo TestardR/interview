@@ -1,19 +1,21 @@
-from urllib.parse import urlparse
-import requests  # async requests
-import time
 import logging
-import redis  # async redis
+from urllib.parse import urlparse
+import time
+
+import redis
+import requests
 import json
 
-from .config import URL, DEFAULT_CACHE_TIME
 from .utils import get_data
 from .cache import cache
 
 
 logger = logging.getLogger()
 
+""" This file hold the Compute External API service """
 
-def _compute(films, people):
+
+def _compute_received_data(films, people):
     """ Aggregates two sources of data to produce
     expected data structure """
     logger.info("Data computation starts")
@@ -36,12 +38,9 @@ def _compute(films, people):
 
 
 def compute_external_api(films="films", people="people"):
+    """ External API data GETTER, separation b/t GETTER and SETTER allows for separation of concerns while testing """
     films_data = get_data(films)
     people_data = get_data(people)
 
     if films_data and people_data:
-        _compute(films_data, people_data)
-        data = cache.get("movies") 
-        return json.loads(data)
-    else:
-        return {}
+        _compute_received_data(films_data, people_data)

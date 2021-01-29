@@ -4,16 +4,16 @@ import json
 
 from .fixture_data import (films, films_without_people, people,
                            people_without_films)
-from cache import cache
-from compute import _compute
+from src.cache import cache
+from src.compute_ext_api import _compute_received_data
 
 """ To avoid false negative test. we skip test if a
 ConnectionError is raised. Thus, to avoid false negatives """
 
 
 @pytest.mark.parametrize("films,people", [(films, people), (films_without_people, people), (films, people_without_films), (films_without_people, people_without_films)])
-def test__compute(films, people):
-    _compute(films, people)
+def test__compute_received_data(films, people):
+    _compute_received_data(films, people)
     data = cache.get("movies")
     expected = json.loads(data)
 
