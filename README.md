@@ -12,16 +12,13 @@
 
 1. Logging Format
 2. Scaling with MQ
-3. Improve Type safety
-4. Testing
+3. Testing
 
 **Notes: Written code has to been done using TDD**
 
 # I. Building Blocks
 
 ## 1. Architecture schema
-
-# Event-Driven Architecture
 
 Below, you can observe the architecture schema which drove the design of this application. The main idea behind this schema is to observe the interactions between the main blocks. These interactions are below explained.
 
