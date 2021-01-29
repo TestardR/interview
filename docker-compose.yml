@@ -9,6 +9,8 @@ services:
     volumes:
       - ./server:/app:delegated
     command: uvicorn src.main:app --reload --host 0.0.0.0 --port 5000
+    environment:
+      LOG_LEVEL: 'INFO'
 
   redis:
     image: redis
