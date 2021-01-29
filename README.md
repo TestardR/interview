@@ -62,12 +62,12 @@ The client is a web interface, available on port 8000. It is a React/TypeScript 
 
 ### Server side
 
-Testing has been done using pytest. Tests are located in one folder mimicking ./src architecture. Both unit tests and functional tests are in the test folder. It could be an improvement to separate them.
+Testing has been done using pytest. Tests are located in one folder mimicking ./src architecture. Unit tests and functional tests are not distinguished. It could be an improvement to separate them.
 
 Notes:
 
-- fixtures.py features shared fixture for testing.
-- fixture_data.py features necessary data for test_compute.py to run. It is a copy of the available data on Ghibli's API.
+- fixtures.py features shared fixtures for testing.
+- fixture_data.py features necessary data for test_compute_ext_api.py to run.
 - test_sanity.py tests access to data and that data conformity to what is expected from Gbibli's API.
 
 ### Client side
@@ -81,15 +81,15 @@ Testing has been done using Jest and Enzyme. Tests are located with its belongin
 
 ## 1. Logging Format
 
-I think that logging format should standardized among micro-services or applications. Currently, I think that format used in this application is not user friendly (itt could be machine friendly though). From I have read, formatting Gunicorn/Uvicorn/FastAPI is a topic in itself: https://pawamoy.github.io/posts/unify-logging-for-a-gunicorn-uvicorn-app/ .
+I think that logging format should standardized among micro-services or applications. Currently, I think that format used in this application is not user friendly (it could be machine friendly though). From I have read, formatting Gunicorn/Uvicorn/FastAPI is a topic in itself: https://pawamoy.github.io/posts/unify-logging-for-a-gunicorn-uvicorn-app/ .
 
 ## 2. Scaling with MQ
 
-If the data requested from the external API were more consequent, the compute svc would take much more time to process. As such, I could consider running several threads computing data concurrently. They would publish the results to a event-bus, such as Kafka, RabbitMQ, or else. The subscribing svc would then wait for the data to be ready to store it in the cache svc.
+If requested data from the external API were more consequent, the compute svc would take much more time to process. As such, I could consider running several threads computing data concurrently. They would publish the results to a event-bus, such as Kafka, RabbitMQ, or else. The subscribing svc would then wait for the data to be ready to store it in the cache svc.
 
 ![architecture schema version 2](https://github.com/TestardR/intrvw_s/blob/master/architecture-v2.png)
 
 ## 3. Testing Policies
 
-Server side, I would separate unit tests from functional tests. It is better practice and unit tests should be runnable outside the docker architecture.
+Server side, I would separate unit tests from functional tests. It is better practice and unit tests should be runnable from outside the docker architecture.
 
