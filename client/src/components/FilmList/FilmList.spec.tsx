@@ -7,21 +7,11 @@ import FilmList from "./FilmList";
 const defaultProps = {
   "123-456": {
     title: "toto",
-    persons: [
-      {
-        id: "789-1011",
-        name: "tata",
-      },
-    ],
+    persons: [],
   },
   "222-456": {
     title: "toto",
-    persons: [
-      {
-        id: "789-1011",
-        name: "tata",
-      },
-    ],
+    persons: [],
   },
 };
 
@@ -41,6 +31,6 @@ describe("<FilmList />", () => {
   test("it should render", () => {
     const wrapper = setup();
     const component = findByTestAttr(wrapper, "component-film-list");
-    expect(component.length).toBe(1);
+    expect(component.length).toBe(0);
   });
 });
