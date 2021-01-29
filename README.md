@@ -16,6 +16,8 @@
 
 **Notes: Written code has to been done using TDD**
 
+---
+
 # I. Building Blocks
 
 ## 1. Architecture schema
@@ -77,6 +79,8 @@ Testing has been done using Jest and Enzyme. Tests are located with its belongin
 - Component.tsx
 - Component.spec.tsx
 
+---
+
 # II. What if I had more time ?
 
 ## 1. Logging Format
@@ -93,3 +97,4 @@ If requested data from the external API were more consequent, the compute svc wo
 
 Server side, I would separate unit tests from functional tests. It is better practice and unit tests should be runnable from outside the docker architecture.
 
+Furthermore, I would look for a way to test that my background task is run everytime it is expected to.

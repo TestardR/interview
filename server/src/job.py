@@ -29,7 +29,7 @@ def compute_external_api_continuously(interval=1):
     continuous_thread = ScheduleThread()
     continuous_thread.start()
 
-    logging.info('Background task started')
+    logging.info("Background task started")
 
     return cease_continuous_run
 
