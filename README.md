@@ -1,9 +1,10 @@
 ## Commands
 
-Full fledged app: docker-compose up (client on port 8000 / server on port 5000)
+Full fledged app:   
+    - docker-compose up (client on port 8000 / server on port 5000)  
 
-Dev mode: 
-    - server (port 5000): docker-compose up -f docker-compose-dev.yml 
+Dev mode:   
+    - server (port 5000): docker-compose up -f docker-compose-dev.yml   
     - client (port 8000): cd client; yarn start
 
 
