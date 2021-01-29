@@ -1,5 +1,5 @@
 import redis
 
-""" Init cache using Redis """
+""" Init cache storage """
 
 cache = redis.Redis(host='redis', port=6379)

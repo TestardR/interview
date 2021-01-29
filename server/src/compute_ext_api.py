@@ -1,4 +1,3 @@
-import logging
 from urllib.parse import urlparse
 import time
 
@@ -8,9 +7,7 @@ import json
 
 from .utils import get_data
 from .cache import cache
-
-
-logger = logging.getLogger()
+from .log_config import logger
 
 """ This file hold the Compute External API service """
 

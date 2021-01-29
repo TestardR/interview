@@ -4,6 +4,7 @@ import schedule
 
 from config import DEFAULT_CACHE_TIME
 from .compute_ext_api import compute_external_api
+from .log_config import logging
 
 """ Background task calling Compute External API service every X time """
 
@@ -27,6 +28,9 @@ def compute_external_api_continuously(interval=1):
 
     continuous_thread = ScheduleThread()
     continuous_thread.start()
+
+    logging.info('Background task started')
+
     return cease_continuous_run
 
 

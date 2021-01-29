@@ -1,9 +1,7 @@
 import requests
-import logging
 
 from config import URL
-
-logger = logging.getLogger()
+from .log_config import logger
 
 
 def get_data(source):

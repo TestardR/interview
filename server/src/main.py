@@ -1,4 +1,3 @@
-import logging
 import json
 import os
 
@@ -13,8 +12,6 @@ from .job import compute_external_api_continuously
 
 app = FastAPI()
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(level=os.getenv('LOG_LEVEL', LOG_LEVEL))
 
 """ Warning: The following settings will have to changed to launch for production """
 origins = [
@@ -33,7 +30,6 @@ app.add_middleware(
 @app.on_event("startup")
 def setup():
     """ Starts background task calling our Compute External API svc every minute """
-    logger.info("Start uppppp MOFO")
     compute_external_api_continuously()
 
 
