@@ -1,1 +1,1 @@
-export const URL = "http://0.0.0.0:5000/movies";
+export const URL = process.env.API_ENDPOINT ?? "http://0.0.0.0:5000/movies";

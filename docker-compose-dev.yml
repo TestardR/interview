@@ -1,0 +1,19 @@
+version: "3.1"
+
+services:
+  app:
+    build:
+      context: ./server
+      dockerfile: Dockerfile-dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app:delegated
+    command: uvicorn src.main:app --reload --host 0.0.0.0 --port 5000
+    environment:
+      LOG_LEVEL: 'INFO'
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
