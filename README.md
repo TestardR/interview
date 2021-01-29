@@ -100,3 +100,7 @@ Server side, I would separate unit tests from functional tests. It is better pra
 Furthermore, I would look for a way to test that my background task is run everytime it is expected to.
 
 Client side, tests should be further complemented. Currently, simple unit tests expect the presence or absence of components in the DOM. I would integrate functional tests and test hooks.
+
+## 4. Improve Type Safety
+
+Client use of TypeScript should be improved, better type safety should be enforced.
