@@ -7,7 +7,7 @@ services:
       dockerfile: ./Dockerfile
       args:
         LOG_LEVEL: 'INFO'
-        CLIENT: 'YOUR_DOMAIN'
+        CLIENT: 'http://localhost:8000'
     ports:
       - "5000:5000"
     
@@ -21,6 +21,6 @@ services:
       context: ./client
       dockerfile: ./Dockerfile
     ports:
-      - "80:80"
+      - "8000:80"
     environment:
-        API_ENDPOINT: 'YOUR_DOMAIN:5000' 
+        API_ENDPOINT: 'http://localhost:5000' 

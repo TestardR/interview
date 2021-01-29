@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker-compose exec app bash -c "cd /test; pytest"
+docker-compose exec server bash -c "cd /test; pytest"
