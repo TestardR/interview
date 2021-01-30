@@ -13,7 +13,7 @@ from .job import compute_external_api_continuously
 app = FastAPI()
 
 
-""" Warning: The following settings will have to changed to launch for production """
+""" Warning: The following settings will have to be reviewed to launch to production """
 origins = [
     os.getenv("CLIENT", DEFAULT_CLIENT)
 ]
