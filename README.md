@@ -23,7 +23,6 @@ Dev mode (client on port 8000 / server on port 5000):
 1. Logging Format
 2. Scaling with MQ
 3. Testing
-4. Type Safety
 
 **Notes: Written code has to been done using TDD**
 
@@ -111,7 +110,3 @@ Server side, I would separate unit tests from functional tests. It is better pra
 Furthermore, I would look for a way to test that my background task is run everytime it is expected to.
 
 Client side, tests should be further complemented. Currently, simple unit tests expect the presence or absence of components in the DOM. I would integrate functional tests and test hooks.
-
-## 4. Type Safety
-
-Client use of TypeScript should be improved, better type safety should be enforced.
