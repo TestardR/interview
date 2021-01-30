@@ -11,7 +11,10 @@ services:
       - ./server:/app:delegated
     command: uvicorn src.main:app --reload --host 0.0.0.0 --port 5000
     environment:
-      LOG_LEVEL: 'INFO'
+      LOG_LEVEL: "INFO"
+      URL: "https://ghibliapi.herokuapp.com"
+      DEFAULT_CACHE_TIME: 40
+      CLIENT: "http://localhost:8000"
 
   redis:
     image: redis

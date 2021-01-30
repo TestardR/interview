@@ -1,9 +1,10 @@
+import json
 from urllib.parse import urlparse
 import time
 
 import redis
 import requests
-import json
+
 
 from .utils import get_data
 from .cache import cache

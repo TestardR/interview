@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import requests
 
-from config import URL, LOG_LEVEL, DEFAULT_CLIENT
+from config import URL, LOG_LEVEL, CLIENT
 from .cache import cache
 from .job import compute_external_api_continuously
 
@@ -15,7 +15,7 @@ app = FastAPI()
 
 """ Warning: The following settings will have to be reviewed to launch to production """
 origins = [
-    os.getenv("CLIENT", DEFAULT_CLIENT)
+    CLIENT
 ]
 
 app.add_middleware(

@@ -34,4 +34,4 @@ def compute_external_api_continuously(interval=1):
     return cease_continuous_run
 
 
-schedule.every(DEFAULT_CACHE_TIME).seconds.do(compute_external_api)
+schedule.every(int(DEFAULT_CACHE_TIME)).seconds.do(compute_external_api)

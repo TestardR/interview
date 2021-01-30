@@ -1,4 +1,6 @@
-URL = 'https://ghibliapi.herokuapp.com'
-DEFAULT_CACHE_TIME = 60
-LOG_LEVEL = 'INFO'
-DEFAULT_CLIENT = 'http://localhost:8000'
+import os
+
+LOG_LEVEL = os.getenv("LOG_LEVEL")
+URL = os.getenv("URL")
+DEFAULT_CACHE_TIME = os.getenv("DEFAULT_CACHE_TIME")
+CLIENT = os.getenv("CLIENT")
