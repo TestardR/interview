@@ -7,6 +7,7 @@ Dev mode (client on port 8000 / server on port 5000):
     - server: docker-compose up -f docker-compose-dev.yml   
     - client: cd client; yarn start
 
+Note: Data will be made available 1 minute after server boots up.
 
 # I. Building Blocks
 
