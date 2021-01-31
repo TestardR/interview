@@ -90,6 +90,11 @@ Testing has been done using Jest and Enzyme. Tests are located with its belongin
 - Component.tsx
 - Component.spec.tsx
 
+For hooks, I used the same convention:
+
+- useHook.ts
+- useHook.spec.ts
+
 ---
 
 # II. What if I had more time ?
@@ -106,8 +111,6 @@ If requested data from the external API were more consequent, the compute svc wo
 
 ## 3. Testing
 
-Server side, I would separate unit tests from functional tests. It is better practice and unit tests should be runnable from outside the docker architecture.
+Server side, I would separate unit tests from functional tests. It is better practice and unit tests should be runnable from outside the docker architecture. Furthermore, I would look for a way to test that my background task is run everytime it is expected to.
 
-Furthermore, I would look for a way to test that my background task is run everytime it is expected to.
-
-Client side, tests should be further developed. Currently, simple unit tests expect the presence or absence of components in the DOM. I would integrate functional tests and test hooks.
+Client side, component tests should be further completed with integration tests.

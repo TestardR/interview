@@ -5,15 +5,13 @@ import { findByTestAttr } from "../../test/testUtils";
 import Film from "./Film";
 
 const defaultProps = {
-  film: {
-    title: "toto",
-    persons: [
-      {
-        id: "789-1011",
-        name: "tata",
-      },
-    ],
-  },
+  title: "toto",
+  persons: [
+    {
+      id: "789-1011",
+      name: "tata",
+    },
+  ],
 };
 
 /**

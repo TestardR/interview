@@ -3,8 +3,12 @@ import { Grid } from "@material-ui/core";
 import Film from "../Film/Film";
 import { Film as IFilm, Films } from "../../Types";
 
-const FilmList = ({ data = {} }) => {
-  const films = Object.entries(data as Films);
+interface IProps {
+  data: Films;
+}
+
+const FilmList: React.FC<IProps> = ({ data = {} }) => {
+  const films = Object.entries(data);
   return (
     <Grid
       container

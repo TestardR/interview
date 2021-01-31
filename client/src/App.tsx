@@ -1,3 +1,4 @@
+import React from "react";
 import { AppBar, Container, Toolbar, Typography } from "@material-ui/core";
 import AccountCircleTwoToneIcon from "@material-ui/icons/AccountCircleTwoTone";
 import { makeStyles } from "@material-ui/core/styles";
@@ -21,9 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+const App: React.FC = () => {
   const classes = useStyles();
-  const data = useFetch<Films>(URL as string);
+  const { loading, data } = useFetch<Films>(URL as string);
+
   return (
     <div data-test="component-app">
       <AppBar className={classes.navbar}>
@@ -39,10 +41,10 @@ function App() {
         </Toolbar>
       </AppBar>
       <Container className={classes.container}>
-        {!data ? <Spinner /> : <FilmList data={data} />}
+        {!data || loading ? <Spinner /> : <FilmList data={data} />}
       </Container>
     </div>
   );
-}
+};
 
 export default App;
