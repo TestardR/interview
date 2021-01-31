@@ -7,7 +7,7 @@ Dev mode (client on port 8000 / server on port 5000):
     - server: docker-compose up -f docker-compose-dev.yml   
     - client: cd client; yarn start
 
-Note: Data will be made available 1 minute after server boots up.
+Note: Data will be made available 1 minute after server boots up (Delay on server start up only).
 
 # I. Building Blocks
 
@@ -25,7 +25,7 @@ Note: Data will be made available 1 minute after server boots up.
 2. Scaling with MQ
 3. Testing
 
-**Notes: Written code has to been done using TDD**
+Note: Written code has to been done using TDD
 
 ---
 
