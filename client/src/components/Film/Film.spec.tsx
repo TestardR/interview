@@ -5,11 +5,15 @@ import { findByTestAttr } from "../../test/testUtils";
 import Film from "./Film";
 
 const defaultProps = {
-  title: "toto",
+  title: "foo",
   persons: [
     {
       id: "789-1011",
-      name: "tata",
+      name: "bar",
+    },
+    {
+      id: "789-1011",
+      name: "foo-bar",
     },
   ],
 };
@@ -26,10 +30,21 @@ const setup = (props = {}) => {
   return shallow(<Film {...setupProps} />);
 };
 
-describe("if there are films", () => {
-  test("it should render", () => {
+describe("<Film />", () => {
+  test("should render", () => {
     const wrapper = setup();
     const component = findByTestAttr(wrapper, "component-film");
     expect(component.length).toBe(1);
+  });
+
+  test("should show the film's title", () => {
+    const wrapper = setup();
+    expect(wrapper.text()).toContain(defaultProps.title);
+  });
+
+  test("should show lists of actors", () => {
+    const wrapper = setup();
+    const component = findByTestAttr(wrapper, "actor-list");
+    expect(component.length).toBe(defaultProps.persons.length);
   });
 });

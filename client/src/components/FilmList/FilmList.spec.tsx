@@ -30,9 +30,15 @@ const setup = (props = {}) => {
 };
 
 describe("<FilmList />", () => {
-  test("it should render", () => {
+  test("should render", () => {
     const wrapper = setup();
     const component = findByTestAttr(wrapper, "component-film-list");
     expect(component.length).toBe(1);
+  });
+
+  test("should render a list of Film", () => {
+    const films = Object.entries(defaultProps.data);
+    const wrapper = setup();
+    expect(wrapper.find("Film").length).toBe(films.length);
   });
 });

@@ -52,7 +52,12 @@ const Film: React.FC<IFilm> = ({ title, persons }) => {
               Actors
             </Typography>
             {persons.map((person) => (
-              <Grid key={person.id} container alignItems="center">
+              <Grid
+                key={person.id}
+                container
+                alignItems="center"
+                data-test="actor-list"
+              >
                 <ArrowRightIcon />
                 <Typography
                   className={classes.title}
