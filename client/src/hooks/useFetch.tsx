@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const useFetch = (url): any => {
-  const [response, setResponse] = useState<any>();
+export const useFetch = <T,>(url: string) => {
+  const [response, setResponse] = useState<T>();
 
-  const fetchData = async (url: string): Promise<any> => {
+  const fetchData = async (url: string) => {
     try {
       const res = await axios.get(url);
       setResponse(res.data);

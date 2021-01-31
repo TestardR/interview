@@ -9,3 +9,8 @@ export interface Films {
     persons: Person[];
   };
 }
+
+export interface Film {
+  title: string;
+  persons: Person[];
+}

@@ -39,7 +39,7 @@ def get_movies():
         data = cache.get("movies")
         return json.loads(data)
     else:
-        return {"loading": True}
+        return None
 
 
 if __name__ == "__main__":

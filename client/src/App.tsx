@@ -5,6 +5,7 @@ import FilmList from "./components/FilmList/FilmList";
 import Spinner from "./components/Spinner/Spinner";
 import { URL } from "./Constants";
 import { useFetch } from "./hooks/useFetch";
+import { Films } from "./Types";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const data = useFetch(URL);
+  const data = useFetch<Films>(URL as string);
   return (
     <div data-test="component-app">
       <AppBar className={classes.navbar}>
@@ -38,7 +39,7 @@ function App() {
         </Toolbar>
       </AppBar>
       <Container className={classes.container}>
-        {!data || data.loading ? <Spinner /> : <FilmList films={data} />}
+        {!data ? <Spinner /> : <FilmList data={data} />}
       </Container>
     </div>
   );

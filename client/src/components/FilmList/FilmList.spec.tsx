@@ -31,6 +31,6 @@ describe("<FilmList />", () => {
   test("it should render", () => {
     const wrapper = setup();
     const component = findByTestAttr(wrapper, "component-film-list");
-    expect(component.length).toBe(0);
+    expect(component.length).toBe(1);
   });
 });

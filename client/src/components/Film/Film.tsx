@@ -3,6 +3,7 @@ import { Card, CardContent, Grid, Typography } from "@material-ui/core";
 import AdbIcon from "@material-ui/icons/Adb";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import { makeStyles } from "@material-ui/core/styles";
+import { Film as IFilm } from "../../Types";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Film = ({ film }) => {
+const Film: React.FC<IFilm> = ({ title, persons }) => {
   const classes = useStyles();
   return (
     <Card className={classes.root} data-test="component-film">
@@ -36,12 +37,12 @@ const Film = ({ film }) => {
           </Grid>
           <Grid item>
             <Typography variant="h5" component="h2" className={classes.title}>
-              {film.title}
+              {title}
             </Typography>
           </Grid>
         </Grid>
 
-        {Array.isArray(film.persons) && film.persons.length ? (
+        {Array.isArray(persons) && persons.length ? (
           <div className={classes.persons}>
             <Typography
               className={classes.subtitle}
@@ -50,7 +51,7 @@ const Film = ({ film }) => {
             >
               Actors
             </Typography>
-            {film.persons.map((person) => (
+            {persons.map((person) => (
               <Grid key={person.id} container alignItems="center">
                 <ArrowRightIcon />
                 <Typography

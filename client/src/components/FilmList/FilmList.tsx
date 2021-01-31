@@ -1,11 +1,10 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import Film from "../Film/Film";
-import { Films } from "../../Types";
+import { Film as IFilm, Films } from "../../Types";
 
-const FilmList: React.FC<Films> = ({ films }) => {
-  if (!films) return  null
-  const data = Object.entries(films);
+const FilmList = ({ data = {} }) => {
+  const films = Object.entries(data as Films);
   return (
     <Grid
       container
@@ -14,11 +13,13 @@ const FilmList: React.FC<Films> = ({ films }) => {
       justify="space-between"
       data-test="component-film-list"
     >
-      {data.map((film) => (
-        <Grid key={film[0]} item>
-          <Film film={film[1]} />
-        </Grid>
-      ))}
+      {films.map((film) => {
+        return (
+          <Grid key={film[0] as string} item>
+            <Film {...(film[1] as IFilm)} />
+          </Grid>
+        );
+      })}
     </Grid>
   );
 };
